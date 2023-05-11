@@ -1,13 +1,27 @@
 import React from 'react';
 import '../css/transcription-list-style.css'
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 import Transcription from './Transcription';
 import TranscriptionForm from './TranscriptionForm'
 import '../css/animations.css'
+import Alert from './Alert';
 
 
 function TranscriptionList(){
   const [transcriptions, setTranscriptions] = useState([]);
+  const[alert, setAlert] = useState();
+
+  useEffect(() => {
+    setAlert();
+  }, [transcriptions]);
+
+  const handleAlert = (alert) => {
+    setAlert(alert)
+  }
+
+  const deleteAlert = () => {
+    setAlert()
+  }
 
   const addTranscription = (transcription) => {
     const transcriptionsUpdate = [transcription, ...transcriptions]
@@ -22,9 +36,13 @@ function TranscriptionList(){
   return(
     <>
       <TranscriptionForm
-        onSubmit={addTranscription} //on submit es un props no un eventlistener
+        onSubmit={addTranscription}
+        handleAlert={handleAlert} //on submit es un props no un eventlistener
       />
       <div className='transcription-list-contenedor'>
+        {
+          alert && <Alert texto={alert} deleteAlert={deleteAlert} />
+        }
         {
           transcriptions.map((transcription) =>
             <Transcription
@@ -35,6 +53,7 @@ function TranscriptionList(){
               deleteTranscription={deleteTranscription}/>
           )
         }
+
       </div>
     </>
   );

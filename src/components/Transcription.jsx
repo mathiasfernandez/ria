@@ -8,14 +8,14 @@ function Transcription({ id, texto, date, deleteTranscription }) {
   const [fadeOut, setFadeOut] = useState(false);
   const [slideDown, setSlideDown] = useState(false);
 
-  useEffect(() => {
-    setSlideDown(true);
+  // useEffect(() => {
+  //   setSlideDown(true);
 
-    return () => {
-      // Restablece el estado de slideDown cuando el componente se desmonta
-      setSlideDown(false);
-    };
-  }, []);
+  //   return () => {
+  //     // Restablece el estado de slideDown cuando el componente se desmonta
+  //     setSlideDown(false);
+  //   };
+  // }, []);
 
   const handleDelete = () => {
     setFadeOut(true);

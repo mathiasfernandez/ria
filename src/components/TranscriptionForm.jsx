@@ -40,7 +40,7 @@ function TranscriptionForm(props){
 				method: 'POST',
 				body: formData,
 				headers:{
-					'Authorization': 'Bearer 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',
+					'Authorization': 'Bearer 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',
 				}
 			}
 			
@@ -50,7 +50,7 @@ function TranscriptionForm(props){
 					return response.json();
 				}
 				else{
-					throw new Error("Error al enviar datos. Codigo de respuesta: " + response.status);
+					throw response
 				}
 			})
 			.then((data) => {
@@ -67,9 +67,18 @@ function TranscriptionForm(props){
 
 			})
 			.catch(error => {
-				console.error('Error', error)
+				if (error instanceof Response) {
+					error.json()
+					.then((errorData) => {
+						props.handleAlert(`Error ${error.status}: ${errorData.error.message}`);
+					});
+				} 
+				else{
+					props.handleAlert(error);
+				}
 				setLoading(false);
-			})
+			});
+				
 		}
     }
 
