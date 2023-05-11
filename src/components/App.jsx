@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import Header from './Header';
 import {Routes, Route, useNavigate } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute'
+import TranscriptionList from './TranscriptionList';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
   }
 
   return (
+
       <div className='app'>
         <Routes>
           <Route path='/' element={
@@ -53,21 +55,24 @@ function App() {
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 cookiePolicy={"single_host_policy"}
-                className='btn-google'  
+                className='btn-google'
               />
             </div>
           }/>
 
           <Route exact path='/home'
             element={
-              <PrivateRoute
-                component={Header}
-                isAuth={isAuthenticated}
-                title={"Bienvenido " + user.name}
-                logo={user.imageUrl}
-                esHome={true}
-                redirectPath="/"
-              />
+              <div className='contenedor-gestor'>
+                <PrivateRoute
+                  component={Header}
+                  isAuth={isAuthenticated}
+                  title={"Bienvenido " + user.name}
+                  logo={user.imageUrl}
+                  esHome={true}
+                  redirectPath="/"
+                />
+                <TranscriptionList/>
+              </div>
             }
           />
       </Routes>

@@ -8,43 +8,13 @@ button{
     letter-spacing: 3px;
     border: none;
     margin: 15px;
-    cursor: pointer;
     display: block;
     color: #0a0a23;
 }
 
 .btn-google{
-    border-radius: 15px !important;
+    height: 70px;
+    border-radius: 20px !important;
     transition: all 0.3s ease 0s !important;
     color: #0a0a23 !important;
-}
-
-.btn-google:hover{
-    width: 70%;
-}
-
-.btn-click{
-    background-color: #28a745;
-}
-
-.btn-click:hover{
-    background-color: #19742e;
-    transition: all 0.3s ease 0s;
-}
-
-.btn-click:active{
-    background-color: #28a745;
-}
-
-.btn-restart{
-    background-color: #ffc107;
-}
-
-.btn-restart:hover{
-    background-color: #b88c08;
-    transition: all 0.3s ease 0s;
-}
-
-.btn-restart:active{
-    background-color: #ffc107;
 }

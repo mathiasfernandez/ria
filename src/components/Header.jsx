@@ -7,7 +7,7 @@ function Header({ title, logo, esHome}){
       <div className= {esHome ? 'title-home' : 'title-login'} >
         {title}
         <div className='logo-conteiner'>
-            <img className='logo-style' src={logo} alt='Logo' />
+            <img className= { esHome ? 'logo-style' : 'logo-inicio-style'} src={logo} alt='Logo' />
         </div>
       </div>
 

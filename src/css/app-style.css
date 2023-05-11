@@ -30,3 +30,21 @@ body{
     height: 500px;
     margin-top: 60px;
 }
+
+.contenedor-gestor{
+    width: 50%;
+    min-height: 700px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #dededf;
+    margin-top: 60px;
+}
+
+.contenedor-titulo{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+}

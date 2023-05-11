@@ -1,0 +1,7 @@
+.transcription-list-contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0px 5% 0px;
+}
