@@ -70,7 +70,7 @@ function TranscriptionForm(props){
 				if (error instanceof Response) {
 					error.json()
 					.then((errorData) => {
-						props.handleAlert(`Error ${error.status}: ${errorData.error.message}`);
+						props.handleAlert(`Error ${error.status}: ${errorData.error.message} ${errorData.error.code}`);
 					});
 				} 
 				else{
