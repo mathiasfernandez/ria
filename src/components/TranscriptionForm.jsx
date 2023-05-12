@@ -40,7 +40,7 @@ function TranscriptionForm(props){
 				method: 'POST',
 				body: formData,
 				headers:{
-					'Authorization': 'Bearer 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',
+					'Authorization': 'Bearer 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',
 				}
 			}
 			

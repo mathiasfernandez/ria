@@ -35,7 +35,8 @@
   
 .loading-icon {
     animation: spin 1s linear infinite;
-    font-size: 25px;
+    font-size: 20px;
+    text-align: center;
 }
   
 @keyframes slideDown {
