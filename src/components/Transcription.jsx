@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Traductor from './Traductor';
+import '../css/animations.css'
 import '../css/transcription-style.css'
 import {AiOutlineCloseCircle} from 'react-icons/ai'
-import '../css/animations.css'
-import { useState, useEffect } from 'react';
 
 function Transcription({ id, texto, date, deleteTranscription }) {
   const [fadeOut, setFadeOut] = useState(false);
   const [slideDown, setSlideDown] = useState(false);
+  const [idiomaDestino, setIdiomaDestino] = useState('en'); // valor predeterminado: español
+
+  const handleIdiomaChange = (e) => {
+    setIdiomaDestino(e.target.value);
+  };
 
   useEffect(() => {
     setSlideDown(true);
@@ -35,19 +40,27 @@ function Transcription({ id, texto, date, deleteTranscription }) {
     };
     return date.toLocaleString('es-ES', options);
   }
+  return (
 
-  return(
-    <div className={`container-transcription ${fadeOut ? 'fade-out' : 'fade-in'} ${slideDown ? 'slide-down' : '' }`}>
+<div className={`container-transcription ${fadeOut ? 'fade-out' : 'fade-in'} ${slideDown ? 'slide-down' : '' }`}>
     
-      <div className='transcription-texto'>
-        <p>{formatoFecha(date)}<br></br>{texto}</p>
-      </div>
-
-      <div className='transcription-icono' onClick={handleDelete}>
+    <div className='transcription-texto'>
+      <p>{formatoFecha(date)}<br></br>{texto}</p>  
+        <select value={idiomaDestino} onChange={handleIdiomaChange}>
+          <option value='en'>Ingles</option>
+          <option value='fr'>Frances</option>
+          <option value='it'>Italiano</option>
+          {/* agregar más opciones de idioma aquí */}
+        </select>
+        <p><Traductor className='transcription-texto' texto={texto} idiomaDestino={idiomaDestino} /></p>
+       
+        <div className='transcription-icono' onClick={handleDelete}>
         <AiOutlineCloseCircle/>
       </div>
-    </div>  
-  )
+      </div>
+      </div>
+ 
+  );
 }
 
 export default Transcription;

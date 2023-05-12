@@ -1,25 +1,25 @@
-import React from 'react';
-import '../css/transcription-list-style.css'
-import { useState} from 'react';
+import React, { useState } from 'react';
+import '../css/transcription-list-style.css';
+import TranscriptionForm from './TranscriptionForm';
 import Transcription from './Transcription';
-import TranscriptionForm from './TranscriptionForm'
-import '../css/animations.css'
+import '../css/animations.css';
 
-
-function TranscriptionList(){
+function TranscriptionList() {
   const [transcriptions, setTranscriptions] = useState([]);
 
   const addTranscription = (transcription) => {
-    const transcriptionsUpdate = [transcription, ...transcriptions]
-    setTranscriptions(transcriptionsUpdate)
-  }
+    const transcriptionsUpdate = [transcription, ...transcriptions];
+    setTranscriptions(transcriptionsUpdate);
+  };
 
   const deleteTranscription = (id) => {
-    const transcriptionsUpdate = transcriptions.filter((transcription) => transcription.id !== id)
-    setTranscriptions(transcriptionsUpdate)
-  }
+    const transcriptionsUpdate = transcriptions.filter(
+      (transcription) => transcription.id !== id
+    );
+    setTranscriptions(transcriptionsUpdate);
+  };
 
-  return(
+  return (
     <>
       <TranscriptionForm
         onSubmit={addTranscription} //on submit es un props no un eventlistener
@@ -27,12 +27,13 @@ function TranscriptionList(){
       <div className='transcription-list-contenedor'>
         {
           transcriptions.map((transcription) =>
-            <Transcription
+            <><Transcription
               key={transcription.id}
               id={transcription.id}
               texto={transcription.texto}
               date={transcription.date}
-              deleteTranscription={deleteTranscription}/>
+              deleteTranscription={deleteTranscription} /></>
+
           )
         }
       </div>
