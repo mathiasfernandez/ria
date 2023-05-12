@@ -13,14 +13,14 @@ function Transcription({ id, texto, date, deleteTranscription }) {
     setIdiomaDestino(e.target.value);
   };
 
-  useEffect(() => {
-    setSlideDown(true);
+  // useEffect(() => {
+  //   setSlideDown(true);
 
-    return () => {
-      // Restablece el estado de slideDown cuando el componente se desmonta
-      setSlideDown(false);
-    };
-  }, []);
+  //   return () => {
+  //     // Restablece el estado de slideDown cuando el componente se desmonta
+  //     setSlideDown(false);
+  //   };
+  // }, []);
 
   const handleDelete = () => {
     setFadeOut(true);

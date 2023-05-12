@@ -50,7 +50,7 @@ function TranscriptionForm(props){
 					return response.json();
 				}
 				else{
-					throw new Error("Error al enviar datos. Codigo de respuesta: " + response.status);
+					throw response
 				}
 			})
 			.then((data) => {
@@ -67,9 +67,18 @@ function TranscriptionForm(props){
 
 			})
 			.catch(error => {
-				console.error('Error', error)
+				if (error instanceof Response) {
+					error.json()
+					.then((errorData) => {
+						props.handleAlert(`Error ${error.status}: ${errorData.error.message} ${errorData.error.code}`);
+					});
+				} 
+				else{
+					props.handleAlert(error);
+				}
 				setLoading(false);
-			})
+			});
+				
 		}
     }
 
