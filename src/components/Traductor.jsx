@@ -18,7 +18,7 @@ function Traductor(props) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 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'
+          'Authorization': 'Bearer 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'
         },
         body: JSON.stringify({
           model : 'text-davinci-003',

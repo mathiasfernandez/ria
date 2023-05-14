@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import Traductor from './Traductor';
+import React, { useState } from 'react';
 import '../css/animations.css'
 import '../css/transcription-style.css'
 import {AiOutlineCloseCircle} from 'react-icons/ai'
@@ -7,7 +6,7 @@ import {AiOutlineCloseCircle} from 'react-icons/ai'
 
 function Transcription({ id, texto, date, deleteTranscription, handleIdioma }) {
   const [fadeOut, setFadeOut] = useState(false);
-  const [slideDown, setSlideDown] = useState(false);
+  const [slideDown] = useState(false);
   const [idiomaDestino, setIdiomaDestino] = useState(); // valor predeterminado: español
 
   const handleIdiomaChange = (e) => {

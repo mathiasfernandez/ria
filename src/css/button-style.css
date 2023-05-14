@@ -18,3 +18,20 @@ button{
     transition: all 0.3s ease 0s !important;
     color: #0a0a23 !important;
 }
+
+.test{
+    width: 25%;
+    font-size: 18px;
+    height: 55px;
+    background-color: rgb(151, 40, 40);
+    color: white;
+    border-radius: 0 4px 4px 0px;
+    font-family: Quicksand, sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease 0s;
+    cursor: pointer;
+    margin-top: 45%;
+    margin-left: 70%;
+    
+}
