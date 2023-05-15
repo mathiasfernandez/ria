@@ -40,7 +40,7 @@ function TranscriptionForm(props){
 				method: 'POST',
 				body: formData,
 				headers:{
-					'Authorization': 'Bearer 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',
+					'Authorization': 'Bearer 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',
 				}
 			}
 			
@@ -83,11 +83,14 @@ function TranscriptionForm(props){
     }
 
     return(
-        <form className='transcription-formulario' action="" onSubmit={manejarEnvio}>
+
+        <form className='mb-3"' action="" onSubmit={manejarEnvio}>
+		<div className='d-flex justify-content-between'>
 			<label className={fileError ? 'transcription-input-error' : 'transcription-input'}>
 				<span>{fileName}</span>
 				<AiOutlineUpload className='upload-icon'/>
 				<input
+					className='form-label'
 					id="fileId" 
 					type="file" 
 					name='file'
@@ -96,12 +99,31 @@ function TranscriptionForm(props){
 					
 				</input>
 			</label>
-            <button className={ loading ? 'transcription-boton-disabled' : 'transcription-boton'} disabled={loading ? true : false}>
+            <button className={ loading ? 'btn btn-success bts-sm' : 'btn btn-outline-success'} disabled={loading ? true : false}>
+				
                 {loading ? <AiOutlineLoading3Quarters className='loading-icon'/> : 'Transcribir'}
             </button>
+			
+			</div>
         </form>
+		
 
-    )
+   ) 
+   /*
+   return(
+	<form className='transcription-formulario' action="" onSubmit={manejarEnvio}>
+<div class="input-group">
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile04"></input>
+    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+  </div>
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button">Button</button>
+  </div>
+</div>
+</form>
+   )*/
+   
 }
 
 export default TranscriptionForm

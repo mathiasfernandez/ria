@@ -9,7 +9,7 @@ import Header from './Header';
 import {Routes, Route, useNavigate } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute'
 import TranscriptionList from './TranscriptionList';
-import { MAX_HEADER_BUF } from 'lamejs/src/js/LameInternalFlags';
+
 
 function App() {
   const client_id = "782599696503-cqs1s0i9im8ai7o576kl6vng1569chcr.apps.googleusercontent.com";
@@ -110,9 +110,9 @@ function App() {
                 redirectPath="/"
               />
               <TranscriptionList />
-       <div className='wrapper'>
-       <button  className="moreInfo" onClick={handleInfo}>Informacion</button>
-       <button  className="test" onClick={handleLogoutClick}>Salir</button>
+       <div className='d-flex justify-content-between'>
+       <button  className="btn btn-info" onClick={handleInfo}>Informacion</button>
+       <button  className="btn btn-danger" onClick={handleLogoutClick}>Salir</button>
               
        </div>
           
@@ -147,7 +147,7 @@ function App() {
 </h1> <a className="link" href='https://github.com/mathiasfernandez/ria'>Link
 </a>
 
-<button  className="test" onClick={handleBack}>Atras</button>
+<button  className="btn btn-danger" onClick={handleBack}>Atras</button>
           </div>
           
           }
