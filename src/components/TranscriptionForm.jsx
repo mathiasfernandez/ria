@@ -40,7 +40,7 @@ function TranscriptionForm(props){
 				method: 'POST',
 				body: formData,
 				headers:{
-					'Authorization': 'Bearer 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',
+					'Authorization': 'Bearer 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',
 				}
 			}
 			
@@ -109,20 +109,6 @@ function TranscriptionForm(props){
 		
 
    ) 
-   /*
-   return(
-	<form className='transcription-formulario' action="" onSubmit={manejarEnvio}>
-<div class="input-group">
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile04"></input>
-    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-  </div>
-  <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button">Button</button>
-  </div>
-</div>
-</form>
-   )*/
    
 }
 
