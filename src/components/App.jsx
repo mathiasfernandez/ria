@@ -128,7 +128,7 @@ function App() {
               <ul>
                   <li>Mathias Fernandez</li>
                   <b ul >
-                    <li>Correo:</li>
+                    <li>Correo: mathiasf07@gmail.com</li>
                     <li>CI: 4.898.294-7</li>
                   </b>
                   <li>Mauro Restrepo</li>
