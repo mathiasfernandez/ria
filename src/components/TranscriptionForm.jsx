@@ -8,7 +8,7 @@ import '../css/animations.scss'
 
 
 function TranscriptionForm(props){
-
+	const apiUrl = process.env.REACT_APP_CHAT_GPT_API_AUDIO_URL;
     const [file, setFile] = useState();
 	const [fileName, setFileName] = useState('Seleccionar archivo...');
 	const [fileError, setFileError] = useState(false);
@@ -35,16 +35,15 @@ function TranscriptionForm(props){
 			formData.append('file', file)
 			formData.append('model', 'whisper-1')
 
-			const url = 'https://api.openai.com/v1/audio/transcriptions'
 			const body = {
 				method: 'POST',
 				body: formData,
 				headers:{
-					'Authorization': 'Bearer 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',
+					'Authorization': `Bearer ${process.env.REACT_APP_CHAT_GPT_API_KEY}`,
 				}
 			}
 			
-			fetch(url,body)
+			fetch(process.env.REACT_APP_CHAT_GPT_API_AUDIO_URL,body)
 			.then((response) => {
 				if(response.ok){
 					return response.json();

@@ -5,6 +5,7 @@ import '../css/traductor-style.scss'
 import {AiOutlineLoading3Quarters} from 'react-icons/ai'
 
 function Traductor(props) {
+  const apiUrl = process.env.REACT_APP_CHAT_GPT_API_TRADUCCIONES_URL;
   const [textoTraducido, setTextoTraducido] = useState(null);
   const [fadeOut, setFadeOut] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -20,11 +21,11 @@ function Traductor(props) {
           { role: "user", content: `Traducir "${props.textoATraducir}" al idioma ${props.idiomaDestino}.` }
         ];
 
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        const response = await fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer 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'
+            'Authorization': `Bearer ${process.env.REACT_APP_CHAT_GPT_API_KEY}`
           },
           body: JSON.stringify({
             model: 'gpt-3.5-turbo',
