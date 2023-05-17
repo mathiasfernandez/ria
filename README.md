@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+## Diseño del sistema 
+Con nuestro equipo conseguimos crear una aplicación React para facilitar el manejo de archivos de audio para hacer que el uso del tiempo de nuestro usuario sea el más eficiente. 
+Para su realizacion decidimos seguir las siguientes historias de usuario:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Historia de usuario 1:
+Como usuario, quiero poder autenticarme en el sistema utilizando mi cuenta de Google para acceder a todas las funciones y características.
 
-In the project directory, you can run:
+### Historia de usuario 2:
 
+Como usuario autenticado, quiero tener la capacidad de subir un archivo de audio al sistema para que pueda ser transcrito y utilizado en otras funcionalidades.
+
+
+### Historia de usuario 3:
+
+Como usuario, quiero que el sistema transcriba el archivo subido para que pueda obtener una versión escrita del contenido del archivo.
+
+	
+### Historia de usuario 4:
+
+Como usuario, quiero tener la opción de traducir la transcripción generada por el sistema a diferentes idiomas para facilitar su comprensión en diferentes contextos.
+
+
+### Historia de usuario 5:
+
+Como usuario, quiero poder resumir la transcripción generada por el sistema para obtener un resumen conciso y comprensible del contenido del archivo de audio.
+
+## Descripcion de las tecnologias
+
+Utilizamos varios componentes React y tratamos de sacarle la mayor ventaja de la tecnología que nos fuera posible.
+también utilizamos la API publica de CHAT-GTP para poder realizar lo que nos propusimos.
+
+
+## Configuración e instalaciòn
+
+Instalación:
+
+1.	Primero clonamos el repositorio en nuestra maquina local.
+2.	Para la instalación necesita por lo menos la última versión de react, npm  como también las siguientes librerías:
+  a.	-openapi
+  b.	-Boostrap
+3.	Luego ejecutamos el siguinete comando y la aplicación debería correr sin problemas!
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
+4.	Tambien podemos utilizar este comando para garantizar una ejecucion optima: 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Mock ups
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Inicio Sesion:
+![image](https://github.com/mathiasfernandez/ria/assets/81320974/c286fc21-e054-401d-8dfd-9b847a6d6879)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Pagina principal:
 
-### `npm run eject`
+![image](https://github.com/mathiasfernandez/ria/assets/81320974/4e5df92f-55bc-4d05-a934-853647063ccf)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Mapa de navegaciòn
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![image](https://github.com/mathiasfernandez/ria/assets/81320974/22a4eaa2-a0a6-4eeb-affd-4c8095828548)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Descripciòn de servicios rest utilizado
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+En este sistema utilizamos la versión gratuita de la API de CHAT-GTP para realizar las transcripciones, traducciones, como también los resúmenes de los audios que se suban al sistema.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
