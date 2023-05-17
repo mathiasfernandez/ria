@@ -1,0 +1,58 @@
+.btn-footer{
+    width: 25%;
+    font-size: 18px;
+    height: 55px;
+    background-color: #01792f;
+    margin-left: 10px;
+    color: white;
+    outline: none;
+    border-radius: 10px;
+    font-family: Quicksand, sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease 0s;
+} 
+
+.btn-footer:hover{
+    background-color:#02af44;
+    transition: all 0.2s ease 0s;
+}
+
+.btn-footer:active{
+    background-color:#00471b;
+    font-size: 17px;
+}
+
+.btn-footer.red{
+    background-color: #ff3048d8;
+
+} 
+
+.btn-footer.red:hover{
+    background-color:#f56475d8;
+    transition: all 0.2s ease 0s;
+}
+
+.btn-footer.red:active{
+    background-color:#d6283cd8;
+    font-size: 17px;
+}
+
+
+.btn-google{
+    height: 70px;
+    border-radius: 20px !important;
+    transition: all 0.3s ease 0s !important;
+    color: #0a0a23 !important;
+}
+
+.btn-resumen{
+    background-color: #1b1b32;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: white;
+    font-family: Quicksand, sans-serif !important; 
+    cursor: pointer;
+    margin-left: 10px;
+}

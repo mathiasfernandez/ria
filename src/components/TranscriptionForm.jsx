@@ -1,10 +1,10 @@
 import React from 'react';
-import '../css/formulario-style.css'
+import '../css/formulario-style.scss'
 import { useState } from 'react';
 import {v4 as uuidv4} from 'uuid'
 import {AiOutlineUpload} from 'react-icons/ai'
 import {AiOutlineLoading3Quarters} from 'react-icons/ai'
-import '../css/animations.css'
+import '../css/animations.scss'
 
 
 function TranscriptionForm(props){
@@ -40,7 +40,7 @@ function TranscriptionForm(props){
 				method: 'POST',
 				body: formData,
 				headers:{
-					'Authorization': 'Bearer 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',
+					'Authorization': 'Bearer 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',
 				}
 			}
 			
@@ -78,19 +78,15 @@ function TranscriptionForm(props){
 				}
 				setLoading(false);
 			});
-				
 		}
     }
 
     return(
-
-        <form className='mb-3"' action="" onSubmit={manejarEnvio}>
-		<div className='d-flex justify-content-between'>
+        <form className='transcription-formulario' action="" onSubmit={manejarEnvio}>
 			<label className={fileError ? 'transcription-input-error' : 'transcription-input'}>
 				<span>{fileName}</span>
 				<AiOutlineUpload className='upload-icon'/>
 				<input
-					className='form-label'
 					id="fileId" 
 					type="file" 
 					name='file'
@@ -99,17 +95,11 @@ function TranscriptionForm(props){
 					
 				</input>
 			</label>
-            <button className={ loading ? 'btn btn-success bts-sm' : 'btn btn-outline-success'} disabled={loading ? true : false}>
-				
+            <button className={ loading ? 'transcription-boton-disabled' : 'transcription-boton'} disabled={loading ? true : false}>
                 {loading ? <AiOutlineLoading3Quarters className='loading-icon'/> : 'Transcribir'}
             </button>
-			
-			</div>
-        </form>
-		
-
+        </form>		
    ) 
-   
 }
 
 export default TranscriptionForm

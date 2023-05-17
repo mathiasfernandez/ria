@@ -1,7 +1,7 @@
 import React from 'react';
-import '../css/alert.css'
+import '../css/alert.scss'
 import {AiOutlineCloseCircle} from 'react-icons/ai'
-import '../css/animations.css'
+import '../css/animations.scss'
 import { useState } from 'react';
 
 function Alert({ texto, deleteAlert }) {

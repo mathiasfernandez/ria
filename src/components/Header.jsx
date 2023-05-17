@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/header-login-style.css'
+import '../css/header-login-style.scss'
 
 
 function Header({ title, logo, esHome}){

@@ -1,40 +1,63 @@
 import React, { useState, useEffect } from 'react';
 import {AiOutlineCloseCircle} from 'react-icons/ai'
-import '../css/animations.css'
-import '../css/traductor-style.css'
+import '../css/animations.scss'
+import '../css/traductor-style.scss'
 import {AiOutlineLoading3Quarters} from 'react-icons/ai'
 
 function Traductor(props) {
   const [textoTraducido, setTextoTraducido] = useState(null);
   const [fadeOut, setFadeOut] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const [alert, setAlert] = useState();
 
   useEffect(() => {
     async function fetchData() {
       setTextoTraducido(null)
       setLoading(true);
-      const response = await fetch('https://api.openai.com/v1/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer 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'
-        },
-        body: JSON.stringify({
-          model : 'text-davinci-003',
-          prompt: `Traducir "${props.textoATraducir}" al idioma ${props.idiomaDestino}.`,
-          max_tokens: 4000,
-          temperature: 0,
-        })
-      });
-      const data = await response.json();
-      setLoading(false)
-      console.log(data);
-      const traduccion = data.choices[0].text.trim();
-      setTextoTraducido(traduccion);
+
+      try {
+        const messages = [
+          { role: "user", content: `Traducir "${props.textoATraducir}" al idioma ${props.idiomaDestino}.` }
+        ];
+
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer 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'
+          },
+          body: JSON.stringify({
+            model: 'gpt-3.5-turbo',
+            messages: messages,
+            temperature: 0
+          })
+        });
+  
+        if (!response.ok) {
+          throw response
+        }
+  
+        const data = await response.json();
+        console.log(data);
+        const traduccion = data.choices[0].message.content;
+        setTextoTraducido(traduccion);
+        setLoading(false);
+      }
+      catch (error) {
+        if (error instanceof Response) {
+					error.json()
+					.then((errorData) => {
+						setAlert(`Error ${error.status}: ${errorData.error.message} ${errorData.error.code}`);
+					});
+				} 
+				else{
+					setAlert(error);
+				}
+				setLoading(false);
+      }
     }
     fetchData();
-  }, [props.textoATraducir, props.idiomaDestino]);
+  }, [props.idiomaDestino]);
 
 
   const handleDelete = () => {
@@ -49,13 +72,17 @@ function Traductor(props) {
     <div className={`container-traductor ${fadeOut ? 'fade-out' : 'fade-in'}`}>
       <div className={loading ? 'traductor-texto center' : 'traductor-texto'}>
         {loading ? <AiOutlineLoading3Quarters className='loading-icon'/> : ''}
-        {textoTraducido}
+
+        {textoTraducido ? textoTraducido : alert}
+
       </div>
 
       <div className='traductor-icono' onClick={handleDelete}>
         <AiOutlineCloseCircle/>
       </div>
-    </div>  
+
+
+  </div>  
   )
 
 }

@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import '../css/transcription-list-style.css';
+import '../css/transcription-list-style.scss';
 import TranscriptionForm from './TranscriptionForm';
 import Transcription from './Transcription';
-import '../css/animations.css';
+import '../css/animations.scss';
 import Alert from './Alert';
 import Traductor from './Traductor';
+import Resumen from './Resumen';
 
 function TranscriptionList() {
   const[transcriptions, setTranscriptions] = useState([]);
   const[alert, setAlert] = useState();
   const[idioma, setIdioma] = useState();
+  const[textoAResumir, setTextoAResumir] = useState();
   const[textoATraducir, setTextoATraducir] = useState();
   const[selectedTranscriptionId, setSelectedTranscriptionId] = useState(null);
+  const[selectedResumenId, setSelectedResumenId] = useState(null);
+
 
 
   useEffect(() => {
@@ -32,9 +36,19 @@ function TranscriptionList() {
     setSelectedTranscriptionId(transcriptionId)
   }
 
+  const handleResumen = (texto, transcriptionId) => {
+    setTextoAResumir(texto)
+    setSelectedResumenId(transcriptionId)
+  }
+
+  const deleteResumen = () => {
+    setTextoAResumir(null);
+    setSelectedResumenId(null)
+  }
+
   const deleteTraduccion = () => {
     setIdioma('')
-    setTextoATraducir('');
+    setTextoATraducir(null);
     setSelectedTranscriptionId(null);
   }
 
@@ -67,14 +81,21 @@ function TranscriptionList() {
               date={transcription.date}
               deleteTranscription={deleteTranscription}
               handleIdioma={handleIdioma}
+              handleResumen={handleResumen}
             />
-            {selectedTranscriptionId === transcription.id && (
+            {selectedTranscriptionId === transcription.id &&(
               <Traductor
-                className='transcription-texto'
                 textoATraducir={textoATraducir}
                 idiomaDestino={idioma}
                 deleteTraduccion={deleteTraduccion}
               />
+              
+            )}
+            {selectedResumenId === transcription.id && textoAResumir && (
+            <Resumen 
+              textoAResumir = {textoAResumir}
+              deleteResumen = {deleteResumen}
+            />
             )}
           </>
         ))}

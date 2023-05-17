@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import '../css/animations.css';
-import '../css/transcription-style.css';
+import '../css/animations.scss';
+import '../css/transcription-style.scss';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import Resumen from './Resumen'; // Importa el componente Resumen
 
-function Transcription({ id, texto, date, deleteTranscription, handleIdioma }) {
+function Transcription({ id, texto, date, deleteTranscription, handleIdioma, handleResumen }) {
   const [fadeOut, setFadeOut] = useState(false);
   const [slideDown] = useState(false);
   const [idiomaDestino, setIdiomaDestino] = useState(); // valor predeterminado: español
-  const [mostrarResumen, setMostrarResumen] = useState(false);
 
   const handleIdiomaChange = (e) => {
     setIdiomaDestino(e.target.value);
@@ -16,7 +15,8 @@ function Transcription({ id, texto, date, deleteTranscription, handleIdioma }) {
   };
 
   const handleResumenClick = () => {
-    setMostrarResumen(true); // Mostrar el componente Resumen
+    handleResumen(texto, id)
+    //setMostrarResumen(true); // Mostrar el componente Resumen
   };
 
   const handleDelete = () => {
@@ -41,7 +41,9 @@ function Transcription({ id, texto, date, deleteTranscription, handleIdioma }) {
   return (
     <div className={`container-transcription ${fadeOut ? 'fade-out' : 'fade-in'} ${slideDown ? 'slide-down' : ''}`}>
       <div className='transcription-texto'>
-        <p>{formatoFecha(date)}<br></br>{texto}</p>
+      {formatoFecha(date)}
+      <br />
+      {texto}
       </div>
 
       <div className='traducir-texto'>
@@ -50,19 +52,17 @@ function Transcription({ id, texto, date, deleteTranscription, handleIdioma }) {
           <option value='en'>Ingles</option>
           <option value='fr'>Frances</option>
           <option value='it'>Italiano</option>
+          <option value='es'>Español</option>
           {/* agregar más opciones de idioma aquí */}
         </select>
       </div>
 
-      <div className='delete-icono' onClick={handleDelete}>
-        <AiOutlineCloseCircle/>
+      <div>     
+        <button className='btn-resumen' onClick={handleResumenClick}>Resumir</button>
       </div>
 
-      <div>     
-        <button onClick={handleResumenClick}>Resumir</button>
-
-        {mostrarResumen && <Resumen textoATraducir={texto} deleteResumen={() => setMostrarResumen(false)} />}
-
+      <div className='delete-icono' onClick={handleDelete}>
+        <AiOutlineCloseCircle/>
       </div>
     </div>
   );
