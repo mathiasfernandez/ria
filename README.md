@@ -63,4 +63,8 @@ Instalación:
 
 En este sistema utilizamos la versión gratuita de la API de CHAT-GTP para realizar las transcripciones, traducciones, como también los resúmenes de los audios que se suban al sistema.
 
+## Estudio de Usabilidad
+
+En general, las elecciones de usabilidad se centran en proporcionar una experiencia fluida, intuitiva y eficiente para los usuarios, minimizando la fricción y facilitando el acceso a las funcionalidades del sistema.
+
 
