@@ -33,11 +33,11 @@ function Resumen(props) {
             messages: messages,
             temperature: 0
           })
-        });  
+        });
         if (!response.ok) {
           throw response;
         }
-  
+
         const data = await response.json();
         const resumen = data.choices[0].message.content;
         setTextoResumido(resumen);
@@ -45,18 +45,18 @@ function Resumen(props) {
       }
       catch (error) {
         if (error instanceof Response) {
-					error.json()
-					.then((errorData) => {
-						setAlert(`Error ${error.status}: ${errorData.error.message} ${errorData.error.code}`);
-					});
-				} 
-				else{
-					setAlert(error);
-				}
-				setLoading(false);
+          error.json()
+            .then((errorData) => {
+              setAlert(`Error ${error.status}: ${errorData.error.message} ${errorData.error.code}`);
+            });
+        }
+        else {
+          setAlert(error);
+        }
+        setLoading(false);
       }
     }
-  
+
     fetchData();
   }, []);
 

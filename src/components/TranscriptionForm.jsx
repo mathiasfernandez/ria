@@ -1,34 +1,34 @@
 import React from 'react';
 import '../css/formulario-style.scss'
 import { useState } from 'react';
-import {v4 as uuidv4} from 'uuid'
-import {AiOutlineUpload} from 'react-icons/ai'
-import {AiOutlineLoading3Quarters} from 'react-icons/ai'
+import { v4 as uuidv4 } from 'uuid'
+import { AiOutlineUpload } from 'react-icons/ai'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import '../css/animations.scss'
 
 
-function TranscriptionForm(props){
+function TranscriptionForm(props) {
 	const apiUrl = process.env.REACT_APP_CHAT_GPT_API_AUDIO_URL;
-    const [file, setFile] = useState();
+	const [file, setFile] = useState();
 	const [fileName, setFileName] = useState('Seleccionar archivo...');
 	const [fileError, setFileError] = useState(false);
 	const [loading, setLoading] = useState(false);
 
-    const manejarFile = (event) => {
-        const archivo = event.target.files[0]
-        setFile(archivo);
+	const manejarFile = (event) => {
+		const archivo = event.target.files[0]
+		setFile(archivo);
 		setFileName(archivo ? archivo.name : 'Seleccionar archivo...');
-        console.log(event.target.files[0])
-    };
+		console.log(event.target.files[0])
+	};
 
-    const manejarEnvio = (event) => {
+	const manejarEnvio = (event) => {
 		event.preventDefault()
 
 		if (file == null) {
 			setFileError(true);
 			return;
 		}
-		else{
+		else {
 			setLoading(true);
 			setFileError(false);
 			const formData = new FormData()
@@ -38,67 +38,67 @@ function TranscriptionForm(props){
 			const body = {
 				method: 'POST',
 				body: formData,
-				headers:{
+				headers: {
 					'Authorization': `Bearer ${process.env.REACT_APP_CHAT_GPT_API_KEY}`,
 				}
 			}
-			
-			fetch(process.env.REACT_APP_CHAT_GPT_API_AUDIO_URL,body)
-			.then((response) => {
-				if(response.ok){
-					return response.json();
-				}
-				else{
-					throw response
-				}
-			})
-			.then((data) => {
-				console.log('sucess', data)
 
-				const transcription = {
-					id: uuidv4(),
-					texto: data.text,
-					date: new Date()
-				}
-				props.onSubmit(transcription);
-				setFileName('Seleccionar archivo...');
-				setLoading(false);
+			fetch(process.env.REACT_APP_CHAT_GPT_API_AUDIO_URL, body)
+				.then((response) => {
+					if (response.ok) {
+						return response.json();
+					}
+					else {
+						throw response
+					}
+				})
+				.then((data) => {
+					console.log('sucess', data)
 
-			})
-			.catch(error => {
-				if (error instanceof Response) {
-					error.json()
-					.then((errorData) => {
-						props.handleAlert(`Error ${error.status}: ${errorData.error.message} ${errorData.error.code}`);
-					});
-				} 
-				else{
-					props.handleAlert(error);
-				}
-				setLoading(false);
-			});
+					const transcription = {
+						id: uuidv4(),
+						texto: data.text,
+						date: new Date()
+					}
+					props.onSubmit(transcription);
+					setFileName('Seleccionar archivo...');
+					setLoading(false);
+
+				})
+				.catch(error => {
+					if (error instanceof Response) {
+						error.json()
+							.then((errorData) => {
+								props.handleAlert(`Error ${error.status}: ${errorData.error.message} ${errorData.error.code}`);
+							});
+					}
+					else {
+						props.handleAlert(error);
+					}
+					setLoading(false);
+				});
 		}
-    }
+	}
 
-    return(
-        <form className='transcription-formulario' action="" onSubmit={manejarEnvio}>
+	return (
+		<form className='transcription-formulario' action="" onSubmit={manejarEnvio}>
 			<label className={fileError ? 'transcription-input-error' : 'transcription-input'}>
 				<span>{fileName}</span>
-				<AiOutlineUpload className='upload-icon'/>
+				<AiOutlineUpload className='upload-icon' />
 				<input
-					id="fileId" 
-					type="file" 
+					id="fileId"
+					type="file"
 					name='file'
 					key={file}
 					onChange={manejarFile}>
-					
+
 				</input>
 			</label>
-            <button className={ loading ? 'transcription-boton-disabled' : 'transcription-boton'} disabled={loading ? true : false}>
-                {loading ? <AiOutlineLoading3Quarters className='loading-icon'/> : 'Transcribir'}
-            </button>
-        </form>		
-   ) 
+			<button className={loading ? 'transcription-boton-disabled' : 'transcription-boton'} disabled={loading ? true : false}>
+				{loading ? <AiOutlineLoading3Quarters className='loading-icon' /> : 'Transcribir'}
+			</button>
+		</form>
+	)
 }
 
 export default TranscriptionForm

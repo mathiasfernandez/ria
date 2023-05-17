@@ -6,7 +6,7 @@ import { gapi } from 'gapi-script';
 import GoogleLogin from 'react-google-login';
 import { useEffect, useState } from 'react';
 import Header from './Header';
-import {Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute'
 import TranscriptionList from './TranscriptionList';
 
@@ -65,7 +65,7 @@ function App() {
     localStorage.setItem("isAuthenticated", false);
     navigate("/");
   };
-  const handleInfo = () =>{
+  const handleInfo = () => {
     navigate("/info");
   }
   const handleLogoutClick = () => {
@@ -73,7 +73,7 @@ function App() {
     auth2.signOut().then(onLogoutSuccess);
   };
 
-  const handleBack = () =>{
+  const handleBack = () => {
     navigate("/home");
   }
 
@@ -111,21 +111,21 @@ function App() {
               />
               <TranscriptionList />
               <div className='contenedor-footer'>
-                <button  className="btn-footer" onClick={handleInfo}> Informacion </button>
-                <button  className="btn-footer red" onClick={handleLogoutClick}> Salir </button>  
+                <button className="btn-footer" onClick={handleInfo}> Informacion </button>
+                <button className="btn-footer red" onClick={handleLogoutClick}> Salir </button>
               </div>
             </div>
           }
         />
 
-        <Route 
+        <Route
           exact
           path="/info"
           element={
-          <div className='contenedor-gestor'>
-            <div className='contenedor-info'>
-            <h1 className=''>Integrantes:</h1> 
-              <ul>
+            <div className='contenedor-gestor'>
+              <div className='contenedor-info'>
+                <h1 className=''>Integrantes:</h1>
+                <ul>
                   <li>Mathias Fernandez</li>
                   <b ul >
                     <li>Correo: mathiasf07@gmail.com</li>
@@ -143,12 +143,12 @@ function App() {
                   </b>
                 </ul>
                 <div >
-                  <h1 className=''>Repositorio de la aplicacion: 
+                  <h1 className=''>Repositorio de la aplicacion:
                   </h1> <a className="link" href='https://github.com/mathiasfernandez/ria'>Link <br /> </a>
-                  <button  className="btn-footer red" onClick={handleBack}> Atras </button>
+                  <button className="btn-footer red" onClick={handleBack}> Atras </button>
+                </div>
               </div>
             </div>
-          </div>
           }
         />
       </Routes>

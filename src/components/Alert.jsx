@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/alert.scss'
-import {AiOutlineCloseCircle} from 'react-icons/ai'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
 import '../css/animations.scss'
 import { useState } from 'react';
 
@@ -14,17 +14,17 @@ function Alert({ texto, deleteAlert }) {
     }, 400); // Espera 400ms antes de eliminar realmente el componente para que se pueda ejecutar la animacion
   }
 
-  return(
+  return (
     <div className={`container-alert ${fadeOut ? 'fade-out' : 'fade-in'}`}>
-    
+
       <div className='alert-texto'>
         {texto}
       </div>
 
       <div className='alert-icono' onClick={handleDelete}>
-        <AiOutlineCloseCircle/>
+        <AiOutlineCloseCircle />
       </div>
-    </div>  
+    </div>
   )
 }
 

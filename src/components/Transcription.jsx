@@ -41,9 +41,9 @@ function Transcription({ id, texto, date, deleteTranscription, handleIdioma, han
   return (
     <div className={`container-transcription ${fadeOut ? 'fade-out' : 'fade-in'} ${slideDown ? 'slide-down' : ''}`}>
       <div className='transcription-texto'>
-      {formatoFecha(date)}
-      <br />
-      {texto}
+        {formatoFecha(date)}
+        <br />
+        {texto}
       </div>
 
       <div className='traducir-texto'>
@@ -57,12 +57,12 @@ function Transcription({ id, texto, date, deleteTranscription, handleIdioma, han
         </select>
       </div>
 
-      <div>     
+      <div>
         <button className='btn-resumen' onClick={handleResumenClick}>Resumir</button>
       </div>
 
       <div className='delete-icono' onClick={handleDelete}>
-        <AiOutlineCloseCircle/>
+        <AiOutlineCloseCircle />
       </div>
     </div>
   );

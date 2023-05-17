@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {AiOutlineCloseCircle} from 'react-icons/ai'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
 import '../css/animations.scss'
 import '../css/traductor-style.scss'
-import {AiOutlineLoading3Quarters} from 'react-icons/ai'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 
 function Traductor(props) {
   const apiUrl = process.env.REACT_APP_CHAT_GPT_API_TRADUCCIONES_URL;
@@ -33,11 +33,11 @@ function Traductor(props) {
             temperature: 0
           })
         });
-  
+
         if (!response.ok) {
           throw response
         }
-  
+
         const data = await response.json();
         console.log(data);
         const traduccion = data.choices[0].message.content;
@@ -46,15 +46,15 @@ function Traductor(props) {
       }
       catch (error) {
         if (error instanceof Response) {
-					error.json()
-					.then((errorData) => {
-						setAlert(`Error ${error.status}: ${errorData.error.message} ${errorData.error.code}`);
-					});
-				} 
-				else{
-					setAlert(error);
-				}
-				setLoading(false);
+          error.json()
+            .then((errorData) => {
+              setAlert(`Error ${error.status}: ${errorData.error.message} ${errorData.error.code}`);
+            });
+        }
+        else {
+          setAlert(error);
+        }
+        setLoading(false);
       }
     }
     fetchData();
@@ -68,22 +68,22 @@ function Traductor(props) {
     }, 400); // Espera 400ms antes de eliminar realmente el componente para que se pueda ejecutar la animacion
   }
 
-  return(
-    
+  return (
+
     <div className={`container-traductor ${fadeOut ? 'fade-out' : 'fade-in'}`}>
       <div className={loading ? 'traductor-texto center' : 'traductor-texto'}>
-        {loading ? <AiOutlineLoading3Quarters className='loading-icon'/> : ''}
+        {loading ? <AiOutlineLoading3Quarters className='loading-icon' /> : ''}
 
         {textoTraducido ? textoTraducido : alert}
 
       </div>
 
       <div className='traductor-icono' onClick={handleDelete}>
-        <AiOutlineCloseCircle/>
+        <AiOutlineCloseCircle />
       </div>
 
 
-  </div>  
+    </div>
   )
 
 }
