@@ -123,17 +123,18 @@ gapi.auth2 ofrece una capa de abstracción sobre las API de autenticación de Go
 
 ## Configuración e instalaciòn
 
-Instalación:
+### Instalación:
 
-1.	Primero clonamos el repositorio por HTTPS en nuestra maquina local - git clone https://github.com/mathiasfernandez/ria.git
-2.	Para la instalación necesitamos lo siguiente:
-   1. Node version 18.2 - https://nodejs.org/en/blog/release/v18.2.0 (debemos instalar la version acorde a nuestro sistema operativo)
-3. Ejecutamos el comando:  `npm install`
+1.	Primero clonamos el repositorio por HTTPS en nuestra maquina local  
+   2.1 git clone https://github.com/mathiasfernandez/ria.git  
+2.	Para la instalación necesitamos lo siguiente:  
+   2.1 Node version 18.2 - https://nodejs.org/en/blog/release/v18.2.0 (debemos instalar la version acorde a nuestro sistema operativo)  
+3. Ejecutamos el comando:  `npm install`  
 
-Ejecucion: 
+### Ejecucion: 
 
 4. Debemos crear una cuenta y acceder a https://platform.openai.com/account/api-keys y para configurar una clave privada.
-   1. Con la clave privada debemos crear modificar la variable de entorno  REACT_APP_CHAT_GPT_API_KEY y cargar el valor antes mencionado
+   1. Con la clave privada debemos modificar la variable de entorno (archivo .ENV)  REACT_APP_CHAT_GPT_API_KEY y cargar el valor antes mencionado
 3.	Luego ejecutamos el siguiente comando y la aplicación se iniciará! `npm start`
 ## Mock ups
 ### Inicio Sesion:
