@@ -2,6 +2,59 @@
 Con nuestro equipo conseguimos crear una aplicación React para facilitar el manejo de archivos de audio para hacer que el uso del tiempo de nuestro usuario sea el más eficiente. 
 Para su realizacion decidimos seguir las siguientes historias de usuario:
 
+## Descripcion de las tecnologias
+
+Utilizamos una estructura en componentes sobre React y tratamos de sacarle la mayor ventaja de la tecnología que nos fuera posible.
+también utilizamos la API publica de CHAT-GTP y un SDK de Google para poder realizar lo que nos propusimos.
+
+## Conexiones externas
+
+### ChatGPT
+
+Api rest usando los metoods POST con una key de autorizacion en el header Basic
+
+### Google
+
+gapi.auth2 es una biblioteca de JavaScript proporcionada por Google para facilitar la autenticación y el manejo de la identidad del usuario utilizando Google Sign-In. Esta biblioteca forma parte de la API de JavaScript de Google (gapi) y proporciona funciones y métodos para interactuar con el sistema de autenticación de Google.
+
+gapi.auth2 ofrece una capa de abstracción sobre las API de autenticación de Google
+
+## Configuración e instalaciòn
+
+### Instalación:
+
+1.	Primero clonamos el repositorio por HTTPS en nuestra maquina local  
+   2.1 git clone https://github.com/mathiasfernandez/ria.git  
+2.	Para la instalación necesitamos lo siguiente:  
+   2.1 Node version 18.2 - https://nodejs.org/en/blog/release/v18.2.0 (debemos instalar la version acorde a nuestro sistema operativo)  
+3. Ejecutamos el comando:  `npm install`  
+
+### Ejecucion: 
+
+4. Debemos crear una cuenta y acceder a https://platform.openai.com/account/api-keys y para configurar una clave privada.
+   1. Con la clave privada debemos modificar la variable de entorno (archivo .ENV)  REACT_APP_CHAT_GPT_API_KEY y cargar el valor antes mencionado
+3.	Luego ejecutamos el siguiente comando y la aplicación se iniciará! `npm start`
+## Mock ups
+### Inicio Sesion:
+![image](https://github.com/mathiasfernandez/ria/assets/81320974/c286fc21-e054-401d-8dfd-9b847a6d6879)
+
+### Pagina principal:
+
+![image](https://github.com/mathiasfernandez/ria/assets/81320974/4e5df92f-55bc-4d05-a934-853647063ccf)
+
+
+## Mapa de navegaciòn
+
+![image](https://github.com/mathiasfernandez/ria/assets/81320974/22a4eaa2-a0a6-4eeb-affd-4c8095828548)
+
+
+## Descripciòn de servicios rest utilizado
+
+En este sistema utilizamos la versión gratuita de la API de CHAT-GTP para realizar las transcripciones, traducciones, como también los resúmenes de los audios que se suban al sistema.
+
+## Estudio de Usabilidad
+
+En general, las elecciones de usabilidad se centran en proporcionar una experiencia fluida, intuitiva y eficiente para los usuarios, minimizando la fricción y facilitando el acceso a las funcionalidades del sistema.
 
 ### Historia de usuario 1:
 
@@ -103,59 +156,5 @@ El sistema debe permitir al usuario realizar acciones adicionales con el resumen
 El sistema debe mantener una interfaz intuitiva y fácil de usar para facilitar la selección y visualización del resumen de la transcripción generada.  
 El sistema debe ofrecer opciones para descargar o guardar el resumen en un formato compatible, como texto o documento.  
 El sistema debe proporcionar una opción para acceder a la transcripción completa en caso de que el usuario desee consultar el contenido detallado del archivo de audio.  
-
-## Descripcion de las tecnologias
-
-Utilizamos una estructura en componentes sobre React y tratamos de sacarle la mayor ventaja de la tecnología que nos fuera posible.
-también utilizamos la API publica de CHAT-GTP y un SDK de Google para poder realizar lo que nos propusimos.
-
-## Conexiones externas
-
-### ChatGPT
-
-Api rest usando los metoods POST con una key de autorizacion en el header Basic
-
-### Google
-
-gapi.auth2 es una biblioteca de JavaScript proporcionada por Google para facilitar la autenticación y el manejo de la identidad del usuario utilizando Google Sign-In. Esta biblioteca forma parte de la API de JavaScript de Google (gapi) y proporciona funciones y métodos para interactuar con el sistema de autenticación de Google.
-
-gapi.auth2 ofrece una capa de abstracción sobre las API de autenticación de Google
-
-## Configuración e instalaciòn
-
-### Instalación:
-
-1.	Primero clonamos el repositorio por HTTPS en nuestra maquina local  
-   2.1 git clone https://github.com/mathiasfernandez/ria.git  
-2.	Para la instalación necesitamos lo siguiente:  
-   2.1 Node version 18.2 - https://nodejs.org/en/blog/release/v18.2.0 (debemos instalar la version acorde a nuestro sistema operativo)  
-3. Ejecutamos el comando:  `npm install`  
-
-### Ejecucion: 
-
-4. Debemos crear una cuenta y acceder a https://platform.openai.com/account/api-keys y para configurar una clave privada.
-   1. Con la clave privada debemos modificar la variable de entorno (archivo .ENV)  REACT_APP_CHAT_GPT_API_KEY y cargar el valor antes mencionado
-3.	Luego ejecutamos el siguiente comando y la aplicación se iniciará! `npm start`
-## Mock ups
-### Inicio Sesion:
-![image](https://github.com/mathiasfernandez/ria/assets/81320974/c286fc21-e054-401d-8dfd-9b847a6d6879)
-
-### Pagina principal:
-
-![image](https://github.com/mathiasfernandez/ria/assets/81320974/4e5df92f-55bc-4d05-a934-853647063ccf)
-
-
-## Mapa de navegaciòn
-
-![image](https://github.com/mathiasfernandez/ria/assets/81320974/22a4eaa2-a0a6-4eeb-affd-4c8095828548)
-
-
-## Descripciòn de servicios rest utilizado
-
-En este sistema utilizamos la versión gratuita de la API de CHAT-GTP para realizar las transcripciones, traducciones, como también los resúmenes de los audios que se suban al sistema.
-
-## Estudio de Usabilidad
-
-En general, las elecciones de usabilidad se centran en proporcionar una experiencia fluida, intuitiva y eficiente para los usuarios, minimizando la fricción y facilitando el acceso a las funcionalidades del sistema.
 
 
