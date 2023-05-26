@@ -1,6 +1,8 @@
+# Obligatorio RIA
+
 ## Diseño del sistema 
 Con nuestro equipo conseguimos crear una aplicación React para facilitar el manejo de archivos de audio para hacer que el uso del tiempo de nuestro usuario sea el más eficiente. 
-Para su realizacion decidimos seguir las siguientes historias de usuario:
+
 
 ## Descripcion de las tecnologias
 
@@ -34,6 +36,8 @@ gapi.auth2 ofrece una capa de abstracción sobre las API de autenticación de Go
 4. Debemos crear una cuenta y acceder a https://platform.openai.com/account/api-keys y para configurar una clave privada.
    1. Con la clave privada debemos modificar la variable de entorno (archivo .ENV)  REACT_APP_CHAT_GPT_API_KEY y cargar el valor antes mencionado
 3.	Luego ejecutamos el siguiente comando y la aplicación se iniciará! `npm start`
+
+
 ## Mock ups
 ### Inicio Sesion:
 ![image](https://github.com/mathiasfernandez/ria/assets/81320974/c286fc21-e054-401d-8dfd-9b847a6d6879)
@@ -156,5 +160,14 @@ El sistema debe permitir al usuario realizar acciones adicionales con el resumen
 El sistema debe mantener una interfaz intuitiva y fácil de usar para facilitar la selección y visualización del resumen de la transcripción generada.  
 El sistema debe ofrecer opciones para descargar o guardar el resumen en un formato compatible, como texto o documento.  
 El sistema debe proporcionar una opción para acceder a la transcripción completa en caso de que el usuario desee consultar el contenido detallado del archivo de audio.  
+
+
+## Ejemplo de funcion Asyncrona
+
+Para cada request que  utilizamos cada vez que llamamos a  las APIs, tenemos una funcion asyncrona llamada fetchData(), que nos permite recibir una respuesta de manera más eficiente y practica.
+Ejemplo:
+![image](https://github.com/mathiasfernandez/ria/assets/81320974/95cb7238-191a-46bc-bbd9-d4c26589f9da)
+
+
 
 
