@@ -44,7 +44,7 @@ gapi.auth2 ofrece una capa de abstracción sobre las API de autenticación de Go
 
 ### Pagina principal:
 
-![image](https://raw.githubusercontent.com/mathiasfernandez/ria/master/assets/traduccion.png)
+![image](https://github.com/mathiasfernandez/imgs/blob/main/traduccion.png?raw=true)
 
 
 ## Mapa de navegaciòn
