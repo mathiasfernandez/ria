@@ -21,7 +21,7 @@ gapi.auth2 es una biblioteca de JavaScript proporcionada por Google para facilit
 
 gapi.auth2 ofrece una capa de abstracción sobre las API de autenticación de Google
 
-## Configuración e instalaciòn
+## Configuración e instalación con NPM
 
 ### Instalación:
 
@@ -37,6 +37,13 @@ gapi.auth2 ofrece una capa de abstracción sobre las API de autenticación de Go
    1. Con la clave privada debemos modificar la variable de entorno (archivo .ENV)  REACT_APP_CHAT_GPT_API_KEY y cargar el valor antes mencionado
 3.	Luego ejecutamos el siguiente comando y la aplicación se iniciará! `npm start`
 
+## Configuración e instalación con Docker
+
+### pre-requisitos :
+
+1. Tener docker instalado : https://docs.docker.com/engine/install/
+1. Ejecutar `docker build -t ria-ia .` 
+2. Luego, ejecutamos   `docker run -p 80:80 ria-ia`
 
 ## Mock ups
 ### Inicio Sesion:
