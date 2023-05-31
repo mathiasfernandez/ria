@@ -8,14 +8,14 @@ import '../css/animations.scss';
 
 function TranscriptionForm(props) {
   const [file, setFile] = useState();
-  const [fileName, setFileName] = useState('Seleccionar archivo...');
+  const [fileName, setFileName] = useState('Seleccionar archivo mp3/mp4/m4a/mpeg/avi/mov ...');
   const [fileError, setFileError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const manejarFile = (event) => {
     const archivo = event.target.files[0];
     setFile(archivo);
-    setFileName(archivo ? archivo.name : 'Seleccionar archivo...');
+    setFileName(archivo ? archivo.name : 'Seleccionar archivo mp3/mp4/m4a/mpeg/avi/mov ...');
   };
 
   const manejarEnvio = (event) => {
@@ -30,7 +30,7 @@ function TranscriptionForm(props) {
 
       if (!isFileValid) {
         setFileError(true);
-		props.handleAlert('Ups! Formato incorrecto estos son los formatos aceptados : [audio/mp3', 'audio/mpeg','audio/m4a', 'audio/mp4', 'video/mp4','video/m4a', 'video/mpeg', 'video/avi', 'video/mov]');
+		props.handleAlert('Ups! Formato incorrecto estos son los formatos aceptados : audio/mp3, audio/mpeg,audio/m4a, audio/mp4, video/mp4, video/m4a, video/mpeg, video/avi, video/mov ');
         return;
       }
 
