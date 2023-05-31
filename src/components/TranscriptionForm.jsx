@@ -25,12 +25,12 @@ function TranscriptionForm(props) {
       setFileError(true);
       return;
     } else {
-      const allowedFormats = ['audio/mp3', 'audio/mpeg', 'audio/mp4', 'video/mp4','video/m4a', 'video/mpeg', 'video/avi', 'video/mov'];
+      const allowedFormats = ['audio/mp3', 'audio/mpeg','audio/m4a', 'audio/mp4', 'video/mp4','video/m4a', 'video/mpeg', 'video/avi', 'video/mov'];
       const isFileValid = allowedFormats.includes(file.type);
 
       if (!isFileValid) {
         setFileError(true);
-		props.handleAlert('Ups! Formato incorrecto estos son los formatos aceptados : [audio/mp3, audio/mpeg, audio/mp4]');
+		props.handleAlert('Ups! Formato incorrecto estos son los formatos aceptados : [audio/mp3', 'audio/mpeg','audio/m4a', 'audio/mp4', 'video/mp4','video/m4a', 'video/mpeg', 'video/avi', 'video/mov]');
         return;
       }
 
