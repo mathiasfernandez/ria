@@ -30,7 +30,6 @@ function App() {
 
     // Verificar si hay información de usuario en el almacenamiento local
     const storedUser = localStorage.getItem("user");
-    console.log(storedUser);
     if (storedUser) {
       setUser(JSON.parse(storedUser));
       setIsAuthenticated(true);
@@ -39,7 +38,6 @@ function App() {
 
   const navigate = useNavigate();
 
-  console.log(isAuthenticated);
 
   const onSuccess = (response) => {
     setUser(response.profileObj);
@@ -48,11 +46,9 @@ function App() {
     localStorage.setItem("user", JSON.stringify(response.profileObj));
     localStorage.setItem("isAuthenticated", true);
     navigate("/home");
-    console.log(response);
   };
 
   const onFailure = (response) => {
-    console.log("Disculpa, algo salió mal, vuelva a intentar");
   };
 
   const onLogoutSuccess = () => {

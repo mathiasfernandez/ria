@@ -8,7 +8,6 @@ import '../css/animations.scss'
 
 
 function TranscriptionForm(props) {
-	const apiUrl = process.env.REACT_APP_CHAT_GPT_API_AUDIO_URL;
 	const [file, setFile] = useState();
 	const [fileName, setFileName] = useState('Seleccionar archivo...');
 	const [fileError, setFileError] = useState(false);
@@ -18,7 +17,6 @@ function TranscriptionForm(props) {
 		const archivo = event.target.files[0]
 		setFile(archivo);
 		setFileName(archivo ? archivo.name : 'Seleccionar archivo...');
-		console.log(event.target.files[0])
 	};
 
 	const manejarEnvio = (event) => {
@@ -53,7 +51,6 @@ function TranscriptionForm(props) {
 					}
 				})
 				.then((data) => {
-					console.log('sucess', data)
 
 					const transcription = {
 						id: uuidv4(),

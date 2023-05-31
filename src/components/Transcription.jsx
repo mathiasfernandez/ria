@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import '../css/animations.scss';
 import '../css/transcription-style.scss';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-import Resumen from './Resumen'; // Importa el componente Resumen
 
 function Transcription({ id, texto, date, deleteTranscription, handleIdioma, handleResumen }) {
   const [fadeOut, setFadeOut] = useState(false);
   const [slideDown] = useState(false);
   const [idiomaDestino, setIdiomaDestino] = useState(); // valor predeterminado: español
+  const [error, setError] = useState('');
 
   const handleIdiomaChange = (e) => {
     setIdiomaDestino(e.target.value);
@@ -15,8 +15,11 @@ function Transcription({ id, texto, date, deleteTranscription, handleIdioma, han
   };
 
   const handleResumenClick = () => {
-    handleResumen(texto, id)
-    //setMostrarResumen(true); // Mostrar el componente Resumen
+    try {
+      handleResumen(texto, id);
+    } catch (error) {
+      setError('Error al generar el resumen');
+    }
   };
 
   const handleDelete = () => {
@@ -64,6 +67,8 @@ function Transcription({ id, texto, date, deleteTranscription, handleIdioma, han
       <div className='delete-icono' onClick={handleDelete}>
         <AiOutlineCloseCircle />
       </div>
+
+      {error && <div className='error-message'>{error}</div>}
     </div>
   );
 }

@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { AiOutlineCloseCircle } from 'react-icons/ai'
-import '../css/animations.scss'
-import '../css/traductor-style.scss'
-import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import { AiOutlineCloseCircle } from 'react-icons/ai';
+import '../css/animations.scss';
+import '../css/traductor-style.scss';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 function Traductor(props) {
   const apiUrl = process.env.REACT_APP_CHAT_GPT_API_TRADUCCIONES_URL;
   const [textoTraducido, setTextoTraducido] = useState(null);
   const [fadeOut, setFadeOut] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [alert, setAlert] = useState();
+  const [alert, setAlert] = useState('');
 
   useEffect(() => {
     async function fetchData() {
-      setTextoTraducido(null)
+      setTextoTraducido(null);
       setLoading(true);
 
       try {
@@ -35,30 +35,35 @@ function Traductor(props) {
         });
 
         if (!response.ok) {
-          throw response
+          throw new Error(`${response.status}`);
         }
 
         const data = await response.json();
-        console.log(data);
         const traduccion = data.choices[0].message.content;
         setTextoTraducido(traduccion);
         setLoading(false);
       }
       catch (error) {
-        if (error instanceof Response) {
-          error.json()
-            .then((errorData) => {
-              setAlert(`Error ${error.status}: ${errorData.error.message} ${errorData.error.code}`);
-            });
-        }
-        else {
-          setAlert(error);
+        switch (parseInt(error.message)) {
+          case 401:
+            setAlert('Api Key invalida, contactá con el administrador para solucionar el problema');
+            break;
+          case 429:
+            setAlert('Excediste la cantidad de request diarias, no te preocupes! Esto sucede por una limitacion de CHAT GPT y su version free');
+            break;
+          case 500:
+            setAlert('Ops, intentalo nuevamente más tarde');
+            break;
+          default:
+            setAlert('Ops estamos teniendo inconvenientes intentalo más tarde. :(');
+            break;
         }
         setLoading(false);
       }
     }
+
     fetchData();
-  }, [props.idiomaDestino]);
+  }, [props.idiomaDestino,apiUrl, props.textoATraducir]);
 
 
   const handleDelete = () => {
@@ -66,26 +71,19 @@ function Traductor(props) {
     setTimeout(() => {
       props.deleteTraduccion();
     }, 400); // Espera 400ms antes de eliminar realmente el componente para que se pueda ejecutar la animacion
-  }
+  };
 
   return (
-
     <div className={`container-traductor ${fadeOut ? 'fade-out' : 'fade-in'}`}>
       <div className={loading ? 'traductor-texto center' : 'traductor-texto'}>
         {loading ? <AiOutlineLoading3Quarters className='loading-icon' /> : ''}
-
-        {textoTraducido ? textoTraducido : alert}
-
+        {textoTraducido !== null ? textoTraducido : alert}
       </div>
-
       <div className='traductor-icono' onClick={handleDelete}>
         <AiOutlineCloseCircle />
       </div>
-
-
     </div>
-  )
-
+  );
 }
 
 export default Traductor;

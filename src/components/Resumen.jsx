@@ -10,7 +10,7 @@ function Resumen(props) {
   const [textoResumido, setTextoResumido] = useState(null);
   const [fadeOut, setFadeOut] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [alert, setAlert] = useState();
+  const [alert, setAlert] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -22,7 +22,7 @@ function Resumen(props) {
           { role: "user", content: `Hace un resumen de este texto "${props.textoAResumir}` }
         ];
 
-        const response = await fetch(process.env.REACT_APP_CHAT_GPT_API_TRADUCCIONES_URL, {
+        const response = await fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -34,44 +34,50 @@ function Resumen(props) {
             temperature: 0
           })
         });
+
         if (!response.ok) {
-          throw response;
+          throw new Error(`${response.status}`);
         }
 
         const data = await response.json();
         const resumen = data.choices[0].message.content;
         setTextoResumido(resumen);
-        setLoading(false)
+        setLoading(false);
       }
       catch (error) {
-        if (error instanceof Response) {
-          error.json()
-            .then((errorData) => {
-              setAlert(`Error ${error.status}: ${errorData.error.message} ${errorData.error.code}`);
-            });
-        }
-        else {
-          setAlert(error);
+        switch (parseInt(error.message)) {
+          case 401:
+            setAlert('Api Key invalida, contactá con el administrador para solucionar el problema');
+            break;
+          case 429:
+            setAlert('Excediste la cantidad de request diarias, no te preocupes! Esto sucede por una limitación de CHAT GPT y su versión gratuita');
+            break;
+          case 500:
+            setAlert('Ops, inténtalo nuevamente más tarde');
+            break;
+          default:
+            setAlert('Ops, estamos teniendo inconvenientes. Inténtalo más tarde. :(');
+            break;
         }
         setLoading(false);
       }
     }
 
     fetchData();
-  }, []);
+  }, [apiUrl,props.textoAResumir]);
 
   const handleDelete = () => {
     setFadeOut(true);
     setTimeout(() => {
       props.deleteResumen();
-    }, 400); // Espera 400ms antes de eliminar realmente el componente para que se pueda ejecutar la animacion
+    }, 400); // Espera 400ms antes de eliminar realmente el componente para que se pueda ejecutar la animación
   };
 
   return (
     <div className={`container-resumen ${fadeOut ? 'fade-out' : 'fade-in'}`}>
       <div className={loading ? 'traductor-texto center' : 'traductor-texto'}>
         {loading ? <AiOutlineLoading3Quarters className='loading-icon' /> : ''}
-        {textoResumido ? textoResumido : alert}
+        {textoResumido !== null ? textoResumido : alert}
       </div>
 
       <div className='traductor-icono' onClick={handleDelete}>
