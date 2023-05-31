@@ -1,9 +1,9 @@
 # Obligatorio RIA
 
 ## Creadores
-Mauro Restrepo
-Leonardo Ramirez
-Mathias Fernandez
+Mauro Restrepo  
+Leonardo Ramirez  
+Mathias Fernandez  
 
 ## Diseño del sistema 
 Con nuestro equipo conseguimos crear una aplicación React para facilitar el manejo de archivos de audio para hacer que el uso del tiempo de nuestro usuario sea el más eficiente. 
