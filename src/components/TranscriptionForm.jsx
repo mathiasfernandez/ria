@@ -78,9 +78,9 @@ function TranscriptionForm(props) {
                   break;
                 case 429:
                   props.handleAlert('Excediste la cantidad de request diarias, no te preocupes! Esto sucede por una limitación de CHAT GPT y su versión gratuita.lo intentaremos nuevamente por vos cada 20 segundos :)');
-				setLoading(true);
-				setTimeout(() => fetchData(), 20000); // Intenta nuevamente después de 20 segundos
-				return; // Sale de la función para evitar el setLoading(false) en el bloque finally      
+                  setLoading(true);
+                  setTimeout(() => fetchData(), 20000); // Intenta nuevamente después de 20 segundos
+                  return; // Sale de la función para evitar el setLoading(false) en el bloque finally      
                 case 500:
                   props.handleAlert('Ops, inténtalo nuevamente más tarde.');
                   break;
