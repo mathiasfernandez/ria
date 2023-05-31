@@ -46,18 +46,21 @@ function Traductor(props) {
       catch (error) {
         switch (parseInt(error.message)) {
           case 401:
-            setAlert('Api Key invalida, contactá con el administrador para solucionar el problema');
+            setAlert('Api Key invalida, contactá con el administrador para solucionar el problema.');
             break;
           case 429:
-            setAlert('Excediste la cantidad de request diarias, no te preocupes! Esto sucede por una limitacion de CHAT GPT y su version free');
-            break;
+            setAlert('Excediste la cantidad de request diarias, no te preocupes! Esto sucede por una limitación de CHAT GPT y su versión gratuita, lo intentaremos nuevamente por vos cada 20 segundos :)');
+            setLoading(true);
+            setTimeout(() => fetchData(), 20000); // Intenta nuevamente después de 20 segundos
+            return; // Sale de la función para evitar el setLoading(false) en el bloque finally      
           case 500:
-            setAlert('Ops, intentalo nuevamente más tarde');
-            break;
+            setAlert('Ops, estamos teniendo problemas con el servicio de IA, inténtalo nuevamente más tarde.');
+           break;
           default:
-            setAlert('Ops estamos teniendo inconvenientes intentalo más tarde. :(');
+            setAlert('Ops, estamos teniendo inconvenientes. Inténtalo más tarde. :(');
             break;
         }
+      } finally {
         setLoading(false);
       }
     }
